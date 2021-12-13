@@ -1,0 +1,27 @@
+port 4422
+
+
+Vagrant.configure("2") do |config|  
+  config.vm.box = "ubuntu/focal64"
+  config.vm.usable_port_range = 1..64000 
+
+end
+
+
+ssh-keygen
+ssh-copy-id -p PORT root@yoko.ukrtux.com
+
+ssh -D 1080 -p PORT root@yoko.ukrtux.com
+ssh -p PORT -R 1PORT:localhost:22 root@yoko.ukrtux.com
+
+New terminal:
+ssh -p 1PORT vagrant@yoko.ukrtux.com
+
+
+sudo nano /etc/ssh/sshd_config
+PasswordAuthentication yes
+
+
+ssh -D 1080 -N -p 4322 root@yoko.ukrtux.com
+
+pass: drE%u10U7K8v(o8
